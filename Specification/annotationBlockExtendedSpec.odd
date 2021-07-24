@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Specification for a modification of standOff markup</title>
+        <author>
+          <persName>
+            <forename>Laurent</forename>
+            <surname>Romary</surname>
+          </persName>
+          <persName>
+            <forename>Simon</forename>
+            <surname>Gabay</surname>
+          </persName>
+        </author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>E-Ditiones project</publisher>
+        <ref target="https://github.com/e-ditiones"/>
+        <availability status="restricted">
+          <licence target="https://creativecommons.org/licenses/by/4.0/">CC-BY</licence>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>July 22nd, 2021</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <schemaSpec ident="catalogues" docLang="en" prefix="tei_" xml:lang="en">
+        <moduleRef key="core" except=""/>
+        <moduleRef key="tei" except=""/>
+        <moduleRef key="header" except=""/>
+        <moduleRef key="textstructure" except=""/>
+        <moduleRef key="spoken" except=""/>
+        <moduleRef key="linking" except=""/>
+        <moduleRef key="analysis" except=""/>
+        <moduleRef key="iso-fs" except=""/>
+        <moduleRef key="namesdates" except=""/>
+        
+        <elementSpec ident="annotationBlock" mode="change">
+          <content>
+            <alternate minOccurs="1" maxOccurs="unbounded">
+              <elementRef key="fs"/>
+              <elementRef key="reg"/>
+              <elementRef key="spanGrp"/>
+              <classRef key="model.global.spoken"/>
+            </alternate>
+          </content>
+        </elementSpec>
+        
+        <elementSpec ident="fs" mode="change">
+          <classes mode="change">
+            <memberOf key="model.annotationLike"/>
+            <memberOf key="model.global.meta"/>
+            <memberOf key="model.featureVal.complex"/>
+          </classes>
+        </elementSpec>
+        
+        <elementSpec ident="reg" mode="change">
+          <classes mode="change">
+            <memberOf key="model.choicePart"/>
+            <memberOf key="model.pPart.transcriptional"/>
+            <memberOf key="model.featureVal.complex"/>
+          </classes>
+        </elementSpec>
+
+      </schemaSpec>
+    </body>
+  </text>
+</TEI>

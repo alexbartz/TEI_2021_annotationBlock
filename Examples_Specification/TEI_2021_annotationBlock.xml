@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Specification/out/annotationBlockExtendedSpec.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../Specification/out/annotationBlockExtendedSpec.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Example of a modification of standOff markup</title>
+            <author>
+               <persName>
+                  <forename>Laurent</forename>
+                  <surname>Romary</surname>
+               </persName>
+               <persName>
+                  <forename>Simon</forename>
+                  <surname>Gabay</surname>
+               </persName>
+            </author>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>E-Ditiones project</publisher>
+            <ref target="https://github.com/e-ditiones"/>
+            <availability status="restricted">
+               <licence target="https://creativecommons.org/licenses/by/4.0/">CC-BY</licence>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <p>July 22nd, 2021</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>
+            <seg xml:id="s1">
+               <w xml:id="s1w1">lõg</w>
+               <w xml:id="s1w2">tems</w>
+               <w xml:id="s1w3">a</w>
+               <w xml:id="s1w4">geneve</w>
+            </seg>
+         </p>                
+      </body>
+   </text>
+   <standOff>
+      <listAnnotation type="linguistic">
+         <!-- Each annotation stands for a <seg> -->
+         <annotationBlock corresp="#s1">
+            <spanGrp type="wordForm">
+               <span target="#s1w1" ana="#s1ling1"/>
+               <span target="#s1w2" ana="#s1ing2"/>
+               <span target="#s1w3" ana="#s1ing3"/>
+               <span target="#s1w4" ana="#s1ing4"/>
+            </spanGrp>
+            <fs xml:id="s1ing1">
+               <f name="lemma">
+                  <string>long</string>
+               </f>
+               <f name="pos">
+                  <symbol value="ADJqua"/>
+               </f>
+               <f name="nomb">
+                  <symbol value="s"/>
+               </f>
+               <f name="genre">
+                  <symbol value="m"/>
+               </f>
+               <!-- Normalisation at the token level -->
+               <f name="norm1">
+                  <string>long</string>
+               </f>
+            </fs>
+            <fs xml:id="s1ing2">
+               <f name="lemma">
+                  <string>temps</string>
+               </f>
+               <f name="pos">
+                  <symbol value="NOMcom"/>
+               </f>
+               <f name="nomb">
+                  <symbol value="s"/>
+               </f>
+               <f name="genre">
+                  <symbol value="m"/>
+               </f>
+               <f name="norm1">
+                  <string>temps</string>
+               </f>
+            </fs>
+            <fs xml:id="s1ing3">
+               <f name="lemma">
+                  <string>à</string>
+               </f>
+               <f name="pos">
+                  <symbol value="PRE"/>
+               </f>
+               <f name="norm1">
+                  <string>à</string>
+               </f>
+            </fs>
+            <fs xml:id="s1ing4">
+               <f name="lemma">
+                  <string>geneve</string>
+               </f>
+               <f name="pos">
+                  <symbol value="NOMpro"/>
+               </f>
+               <f name="norm1">
+                  <string>Genève</string>
+               </f>
+            </fs>
+         </annotationBlock>
+      </listAnnotation>
+      <!-- Normalisation at the seg level, with a correction  of the segmentation-->
+      <listAnnotation type="normalisation">
+         <annotationBlock corresp="#s1">
+            <spanGrp type="formNorm">
+               <span target="#s1w1 #s1w2" corresp="#s1norm1"/>
+               <span target="#s1w2" corresp="#s1norm2"/>
+               <span target="#s1w2" corresp="#s1norm3"/>
+            </spanGrp>
+            <reg xml:id="s1norm1">longtemps</reg>
+            <reg xml:id="s1norm2">à</reg>
+            <reg xml:id="s1norm3">Genève</reg>
+         </annotationBlock>
+      </listAnnotation>
+      <listAnnotation type="NERD">
+         <annotationBlock corresp="#s1">
+            <spanGrp type="formNorm">
+               <span target="#s1w4" ana="#s1ner1"/>
+            </spanGrp>
+            <fs xml:id="s1ner1">
+               <f name="NER">
+                  <symbol value="B-loc.adm.town"/>
+               </f>
+               <f name="wikidata">
+                  <symbol value="Q71"/>
+               </f>
+            </fs>
+         </annotationBlock>
+      </listAnnotation>
+   </standOff>
+</TEI>
